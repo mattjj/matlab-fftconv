@@ -17,13 +17,13 @@ function c = fftconv(x,y,shape)
 %
 % This computation may not be what you want; fftfilt is a much smarter function.
 % See blogs.mathworks.com/steve/2009/11/03/the-conv-function-and-implementation-tradeoffs/
-    
+
     if nargin < 3, shape = 'full'; end
-    
+
     padded = length(x) + length(y) - 1; % for zero padding, otherwise fft computes circular convolution
     k = 2^nextpow2(padded);
     c = real(ifft(bsxfun(@times,fft(x,k),fft(y,k)))); % the only real work in this function!
-    
+
     smaller = min(size(x,1),size(y,1));
     if strcmp(shape,'valid')
         c = c(smaller:padded-smaller+1,:);
@@ -35,5 +35,5 @@ function c = fftconv(x,y,shape)
     else
         error('invalid shape argument to fftconv: %s',shape);
     end
-    
+
 end

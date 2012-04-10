@@ -1,0 +1,20 @@
+# Convenient conv functions with FFTs under the hood #
+
+These are two Matlab functions for computing convolutions using the FFT. They
+replicate the syntax of Matlab's `conv` function, particularly the
+`shape={full,valid,same}` argument. There is a
+[MathWorks blog post](http://blogs.mathworks.com/steve/2009/11/03/the-conv-function-and-implementation-tradeoffs/)
+discussing the tradeoffs and explaining why Matlab's `conv` doesn't use FFTs.
+
+See the function help strings for details.
+
+## Speed and Correctness ##
+
+You can use the included script `test_correctness.m` to be sure `fftconv` is
+computing the right thing.
+
+If you get the [`timeit` function from Matlab Central](http://www.mathworks.com/matlabcentral/fileexchange/18798)
+you can run `test_timing.m` to produce plots like this one:
+
+![fftconv timing](http://www.mit.edu/~mattjj/github/matlab-fftconv/fftconv_timing.png)
+

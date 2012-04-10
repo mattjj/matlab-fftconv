@@ -19,3 +19,5 @@ for k = 1:numel(nn)
 end
 plot(nn, t_normal, nn, t_fft, nn, t_fftfs)
 legend({'conv computation', 'fftconv computation', 'fftfiltshape computation'})
+xlabel('signal length');
+ylabel('time (sec)');
